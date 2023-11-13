@@ -1,0 +1,29 @@
+
+plugins {
+    id 'java'
+}
+java {
+    sourceCompatibility = '11'
+}
+ext {
+    gemfireVersion = '10.0.1'
+}
+group = 'demo.gemfire'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        credentials {
+            username "$gemfireReleaseRepoUser"
+            password "$gemfireReleaseRepoPassword"
+        }
+        url "https://commercial-repo.pivotal.io/data3/gemfire-release-repo/gemfire"
+    }
+}
+
+dependencies {
+    implementation "com.vmware.gemfire:gemfire-core:$gemfireVersion"
+
+}
+
